@@ -7,8 +7,12 @@ In game are three main objects - 2 paddles, 1 ball.
 This game has only single player mode. User controls one of the paddle,
 the second is 'ai' paddle. The game is provided with counter that counts down seconds to start game.
 
+## Screenshoots
+
+
 ## Technologies
-Python 3.8 \n
+Python 3.8 
+
 Pygame 1.9.6
 
 ## Status
