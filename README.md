@@ -8,7 +8,7 @@ This game has only single player mode. User controls one of the paddle,
 the second is 'ai' paddle. The game is provided with counter that counts down seconds to start game.
 
 ## Technologies
-Python 3.8
+Python 3.8 \n
 Pygame 1.9.6
 
 ## Status
