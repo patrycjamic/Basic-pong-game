@@ -1,6 +1,6 @@
 # Pong Game
 
-Pong game created with Python and Pygame
+Pong game created with Python and Pygame module
 
 ## General Info
 In game are three main objects - 2 paddles, 1 ball.
