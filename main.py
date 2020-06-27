@@ -8,7 +8,6 @@ class Block(pygame.sprite.Sprite):
         self.image = pygame.image.load(path)
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
 
-#
 class Player(Block):
     def __init__(self, path, x_pos, y_pos, speed):
         super().__init__(path, x_pos, y_pos)
