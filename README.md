@@ -11,6 +11,8 @@ Game ends when someone scores 5 points.
 
 ## Screenshoots
 
+![screenshot1](https://user-images.githubusercontent.com/40001103/85919745-7f4eb780-b86e-11ea-8624-dfa20eff7d45.png)
+
 
 ## Technologies
 Python 3.8 
