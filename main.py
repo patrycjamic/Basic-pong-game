@@ -1,4 +1,6 @@
-import pygame, sys, random
+import pygame, sys, random, tkinter as tk
+from pygame import mixer
+from tkinter import messagebox
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, path, x_pos, y_pos):
@@ -6,7 +8,7 @@ class Block(pygame.sprite.Sprite):
         self.image = pygame.image.load(path)
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
 
-
+#
 class Player(Block):
     def __init__(self, path, x_pos, y_pos, speed):
         super().__init__(path, x_pos, y_pos)
@@ -47,6 +49,7 @@ class Ball(Block):
 
         if pygame.sprite.spritecollide(self, self.paddles, False):
             pygame.mixer.Sound.play(pong_sound)
+
             collision_paddle = pygame.sprite.spritecollide(self, self.paddles, False)[0].rect
 
             if abs(self.rect.right - collision_paddle.left) < 10 and self.speed_x > 0:
@@ -126,6 +129,10 @@ class GameManager(Block):
         self.reset_ball()
         self.draw_score()
 
+        self.exit_game()
+
+
+
     def reset_ball(self):
         if self.ball_group.sprite.rect.right >= screen_width:
             self.opponent_score += 1
@@ -138,12 +145,20 @@ class GameManager(Block):
         player_score = basic_font.render(str(self.player_score), True, numbers_color)
         opponent_score = basic_font.render(str(self.opponent_score), True, numbers_color)
 
-        player_score_rect = player_score.get_rect(midleft=(screen_width / 2 + 40, screen_height / 2))
-        opponent_score_rect = opponent_score.get_rect(midright=(screen_width / 2 - 40, screen_height / 2))
+        player_score_rect = player_score.get_rect(midleft=(screen_width / 2 + 30, 30))
+        opponent_score_rect = opponent_score.get_rect(midright=(screen_width / 2 - 30, 30))
 
         screen.blit(player_score, player_score_rect)
         screen.blit(opponent_score, opponent_score_rect)
 
+    def exit_game(self):
+        if self.opponent_score == 5 or self.player_score == 5:
+            self.draw_score()
+            window.withdraw()
+            messagebox.showinfo('Info', f'The score is {self.opponent_score}:{self.player_score}')
+            pygame.display.quit()
+            pygame.quit()
+            sys.exit()
 
 # General setup
 pygame.mixer.pre_init(44100, -16,2,500)
@@ -151,15 +166,16 @@ pygame.init()
 clock = pygame.time.Clock()
 
 # Main Window
-screen_width = 1024#1280
-screen_height = 700 #960
+screen_width = 1024
+screen_height = 768
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Pong')
+pygame.display.set_caption('Pong Game')
 
+# Messagebox
+window = tk.Tk()
 
 # Colors
 bg_color = (9,37,50)
-# rect_color = (199, 226, 178)
 numbers_color = (137, 201, 184)
 
 basic_font = pygame.font.Font('freesansbold.ttf', 32)
@@ -168,6 +184,10 @@ middle_strip = pygame.Rect(screen_width/2-2,0,4,screen_height)
 #Sound
 pong_sound = pygame.mixer.Sound('pong.ogg')
 score_sound = pygame.mixer.Sound('score.ogg')
+
+# Background music
+mixer.music.load('elevator.ogg')
+mixer.music.play(-1)
 
 # Game objects
 player = Player('paddle.png',screen_width -20, screen_height/2,5)
@@ -206,5 +226,3 @@ while True:
     # Rendering
     pygame.display.flip()
     clock.tick(120)
-
-
