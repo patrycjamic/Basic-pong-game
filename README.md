@@ -5,7 +5,9 @@ Pong game created with Python and Pygame module
 ## General Info
 In game are three main objects - 2 paddles, 1 ball.
 This game has only single player mode. User controls one of the paddle,
-the second is 'ai' paddle. The game is provided with counter that counts down seconds to start game.
+the second is 'ai' paddle. The game is provided with counter that counts down seconds to start game at the beginning and every time
+the balls falls out. 'Elevator music' is playing in the background.
+Game ends when someone scores 5 points.
 
 ## Screenshoots
 
