@@ -1,10 +1,10 @@
 # Pong Game
 
-Pong game created with Python and Pygame, Tkinter modules
+Pong game created with Python using Pygame and Tkinter modules.
 
 ## General Info
-Simple game 
-This game has only single player mode. User controls one of the paddle,
+This project is simple Pong Game.
+The game has only single player mode. User controls one of the paddle,
 the second is 'ai' paddle. The game is provided with counter that counts down seconds to start game at the beginning and every time
 the balls falls out. 'Elevator music' is playing in the background.
 Game ends when someone scores 5 points.
